@@ -1,5 +1,5 @@
 # Analysis of b2AR and bArrestin2 interactions from single-particle tracking data in CHO cells
-Plasma membrane preassociation drives b-arrestin coupling to receptors and activation  
+**Plasma membrane preassociation drives b-arrestin coupling to receptors and activation**  
 Jak Grimes, Zsombor Koszegi, Yann Lanoiselée, Tamara Miljus, Shannon L. O’Brien, Tomasz M. Stepniewski, Brian Medel-Lacruz, Mithu Baidya, Maria Makarova, Ravi Mistry, Joëlle Goulding, Julia Drube, Carsten Hoffmann, Dylan M. Owen, Arun K. Shukla, Jana Selent, Stephen J. Hill, Davide Calebiro  
 bioRxiv, 2022.11. 15.516577
 
