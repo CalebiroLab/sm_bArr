@@ -1,5 +1,5 @@
 # Analysis of b2AR and bArrestin2 interactions from single-particle tracking data in CHO cells
-Plasma membrane preassociation drives -arrestin coupling to receptors and activation  
+Plasma membrane preassociation drives b-arrestin coupling to receptors and activation  
 Jak Grimes, Zsombor Koszegi, Yann Lanoiselée, Tamara Miljus, Shannon L. O’Brien, Tomasz M. Stepniewski, Brian Medel-Lacruz, Mithu Baidya, Maria Makarova, Ravi Mistry, Joëlle Goulding, Julia Drube, Carsten Hoffmann, Dylan M. Owen, Arun K. Shukla, Jana Selent, Stephen J. Hill, Davide Calebiro  
 bioRxiv, 2022.11. 15.516577
 
@@ -22,7 +22,7 @@ The structure parameter contains all the parameters used for analysis. It can be
 
 ##### Coordinate alignment
 A .mat file should be created containing 2 variables of 1x3 cells containing ‘tform’ transformations for channel alignement. The first variable named ‘t_piecewise_linear’ should contain nothing in first cell, the tform for transformation from C2 to C1 in second cell and the tform for transformation from C3 to C1 in the third cell. The second variable ‘t_piecewise_linear_rev’ has the similar structure but with reverse transformations (empty, C1 to C2, C1 to C3).  
-We recommend using a piecewise linear tform although an affine transformation could be used as well. 
+We recommend using a 'piecewise linear' tform although an 'affine' tform transformation could be used as well. 
 The alignment matrix should be stored in the folder specified as ‘global_folders.rawfolder’.
 ## Trajectory analysis
 ##### Detection and tracking
