@@ -39,6 +39,7 @@ This will generate an intermediate file ‘{movie_name_basis}-C{n}_gui2.mat’ a
 1. OBJ: a structure where data coordinates are contained in OBJ.xR and OBJ.yR and spot intensities in OBJ.trjRB, when a molecules disapears the last coordinate is repeated until for all subsequent frames.
 2. OBJ2: a structure where data coordinates are contained in OBJ2.xR and OBJ2.yR and spot intensities in OBJ2.trjRB, when a molecules disapears all subsequent frames are filled with NaN.
 3. IFO: File containing informations on the data.
+4. TME: contains the time point corresponding to each frame
 
 This file contains several matrices. For each movie, a new field ‘IFO.calmatrix’ should be  appended to the IFO structure, which contains the file name of the alignment matrix (Example: IFO.calmatrix=’alignement_matrix’).
 
