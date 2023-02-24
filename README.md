@@ -17,10 +17,10 @@ movie_list.GROUP_NAME_2=['movie4 movie5 movie6'];
 
 To these movie names, suffixes ‘-C1’ and ‘-C2’ will be attached automatically for receptor and arrestin respectively during analysis.
 
-#####	Analysis parameters
+####	Analysis parameters
 The structure parameter contains all the parameters used for analysis. It can be loaded by calling the script ‘parameter_list.m’
 
-##### Coordinate alignment
+#### Coordinate alignment
 A .mat file should be created containing 2 variables of 1x3 cells containing ‘tform’ transformations for channel alignement. The first variable named ‘t_piecewise_linear’ should contain nothing in first cell, the tform for transformation from C2 to C1 in second cell and the tform for transformation from C3 to C1 in the third cell. The second variable ‘t_piecewise_linear_rev’ has the similar structure but with reverse transformations (empty, C1 to C2, C1 to C3).  
 We recommend using a 'piecewise linear' tform although an 'affine' tform transformation could be used as well. 
 The alignment matrix should be stored in the folder specified as ‘global_folders.rawfolder’.
