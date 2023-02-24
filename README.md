@@ -51,16 +51,14 @@ This script generates the following files in the folder ‘global_folders.rawfol
 
 2. ‘{movie_name_basis}-C1{movie_name_basis}-C2_intmatrix_0pShiftX-0pShiftY-0fShiftT.mat’: contains a structure 'Ch' that contains all the trajectories post alignement combined with the interaction matrix and a list of all interaction start, and a list of interaction 'families', portions of interactions that together form a longer interaction.
 
-The algorithm first does gap closing of the X and Y coordinates, then it computes the interaction matrix. Then an optimisation routine is used to link interactions portions together into longer 'interaction families' by trying to minimize the number of interaction families and starting from the case where each interaction is in a different family. This process is necessary to deal with situations with merges and splits. For example, if two receptor molecules are at the same place, their trajectory will exactly the same until they split. If while merged the receptors colocalise with an arrestin molecule then both receptors with be recorded to colocalise with the same arrestin in the 'interaction matrix'. Because an arrestin cannot interact with two receptors at the same time, the optimisation routine finds to which receptor the interaction should be attributed depending on which continues to colocalise after the split.
-Two interactions can be connected only if both interactions contain the same molecules 
+The algorithm first does gap closing of the X and Y coordinates, then it computes the interaction matrix. Then an optimisation routine is used to link interactions portions together into longer 'interaction families' by trying to minimize the number of interaction families and starting from the case where each interaction is in a different family. This process is necessary to deal with situations with merges and splits. For example, if two receptor molecules are at the same place, their trajectory will be exactly the same until they split. If, while merged, the receptors colocalise with an arrestin molecule then both receptors will be recorded to colocalise with the same arrestin in the 'interaction matrix'. Because an arrestin cannot interact with two receptors at the same time, the optimisation routine finds to which receptor the interaction should be attributed depending on which continues to colocalise after the split.
+
+Then a third file is created  where the trajectory are reorganised according to the interaction linking performed by the optimisation algorithm.
 
 
 
 Please cite 
 >Sungkaworn, T. et al. Single-molecule imaging reveals receptor-G protein interactions at cell surface hot spots. Nature 550, 543–547 (2017).
-
-
-
 
 #### Analysis of diffusive states
 The trajectories are first analysed with an algorithm that detects transient trapping events for each trajectory and each channel, described in 
@@ -75,7 +73,7 @@ Please cite
 Then, the information about transient trapping is combined with that of colocalization between C1 and C2 over time using the script “cycle_states_forced_or_not.m”. This generates a file ‘{movie_name_basis}-C{n}_list_states.mat’ for each movie and channel n in the folder ‘global_folders.state_analysis_folder’.
 
 #### Time-averaged MSD
-The TAMSD is computed for each trajectory in C1 and C2 using the function ‘cycle_TAMSD_GABAB_Filamin.m’. For each trajectory, the analysis estimates the anomalous exponent α and the generalized diffusion coefficient D_α by fitting the TAMSD curve as a function of lag-time with the formula for the average TAMSD in 2 dimensions:
+The TAMSD is computed for each trajectory in C1 and C2 using the function ‘cycle_TAMSD.m’. For each trajectory, the analysis estimates the anomalous exponent α and the generalized diffusion coefficient D_α by fitting the TAMSD curve as a function of lag-time with the formula for the average TAMSD in 2 dimensions:
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\langle%20\delta^2(\Delta,t)\rangle=4D_\alpha%20\Delta^\alpha+4\sigma^2"/>
 
