@@ -7,7 +7,7 @@ bioRxiv, 2022.11. 15.516577
 MATLAB R2018b
 ## Analysis requirements
 #### Movie Names
-Movies of Receptor and Arrestin are recorded simultaneously as .tif files. Receptor and arrestin movies should have the same base name (example ‘{movies_name_basis}1’) but with a suffix ‘-C1’ for receptor and a suffix ‘-C2’ for arrestin.
+Movies of Receptor and Arrestin are recorded simultaneously as .tif files. Receptor and arrestin movies should have the same base name (example ‘{movies_name_basis}1’) but with a suffix ‘-C1’ for receptor and a suffix ‘-C2’ for arrestin and '-C3' for clathrin coated pits (CCP).
 #### Folders
 The file ‘global_folders.m’ contains all the paths to the folders used in the analysis. The user should create all the folders specified in this file and update the paths in the file accordingly. All raw data should be stored in the folder specified as 'global_folders.rawfolder'.
 #### Movie list
@@ -15,7 +15,7 @@ A file should be created that contains all movies organized by groups inside a M
 movie_list.GROUP_NAME_1=['movie1 movie2 movie3'];
 movie_list.GROUP_NAME_2=['movie4 movie5 movie6'];
 
-To these movie names, suffixes ‘-C1’ and ‘-C2’ will be attached automatically for receptor and arrestin respectively during analysis.
+To these movie names, suffixes ‘-C1’, ‘-C2’ and '-C3' will be attached automatically for receptor, arrestin and CCP respectively during analysis.
 
 ####	Analysis parameters
 The structure parameter contains all the parameters used for analysis. It can be loaded by calling the script ‘parameter_list.m’
@@ -42,6 +42,8 @@ This will generate an intermediate file ‘{movie_name_basis}-C{n}_gui2.mat’ a
 4. TME: variable containing the time point corresponding to each frame
 
 This file contains several matrices. For each movie, a new field ‘IFO.calmatrix’ should be  appended to the IFO structure, which contains the file name of the alignment matrix (Example: IFO.calmatrix=’alignement_matrix’).
+#### Clathrin Coated-Pits binary mask
+CCP movies are not tracked because CCP are larger than diffraction limit. Instead a binary mask is made using the function 'binary_msk_CCP'
 
 #### Interaction analysis
 The interaction analysis is performed using the script ‘cycles_interaction.m’. The script computes the colocalization events between  C1 and C2 as described in Sungkaworn, T. et al. Single-molecule imaging reveals receptor-G protein interactions at cell surface hot spots. Nature 550, 543–547 (2017).
@@ -61,8 +63,7 @@ Please cite
 >Sungkaworn, T. et al. Single-molecule imaging reveals receptor-G protein interactions at cell surface hot spots. Nature 550, 543–547 (2017).
 
 #### Analysis of diffusive states
-The trajectories are first analysed with an algorithm that detects transient trapping events for each trajectory and each channel, described in 
->Lanoiselée, Y., Grimes, J., Koszegi, Z. & Calebiro, D. Detecting transient trapping from a single trajectory: A structural approach. Entropy 23, 1–16 (2021). 
+The trajectories are first analysed with an algorithm that detects transient trapping events for each trajectory and each channel, described in Lanoiselée, Y., Grimes, J., Koszegi, Z. & Calebiro, D. Detecting transient trapping from a single trajectory: A structural approach. Entropy 23, 1–16 (2021). 
 
 The code for transient trapping detection can be downloaded here: 
 https://github.com/YannLanoiselee/Transient_trapping_analysis
@@ -70,7 +71,10 @@ https://github.com/YannLanoiselee/Transient_trapping_analysis
 Please cite 
 >Lanoiselée, Y., Grimes, J., Koszegi, Z. & Calebiro, D. Detecting transient trapping from a single trajectory: A structural approach. Entropy 23, 1–16 (2021).
 
-Then, the information about transient trapping is combined with that of colocalization between C1 and C2 over time using the script “cycle_states_forced_or_not.m”. This generates a file ‘{movie_name_basis}-C{n}_list_states.mat’ for each movie and channel n in the folder ‘global_folders.state_analysis_folder’.
+Then, the information about transient trapping is combined with that of colocalization between recpetor and arrestin as well as with the information about colocalisation of receptor or arrestin with Clathrin Coated Pits over time using the script “cycle_states_forced_or_not.m”. This generates a file ‘{movie_name_basis}-C{n}_list_states.mat’ for each movie and channel n in the folder ‘global_folders.state_analysis_folder’.
+
+
+
 
 #### Time-averaged MSD
 The TAMSD is computed for each trajectory in C1 and C2 using the function ‘cycle_TAMSD.m’. For each trajectory, the analysis estimates the anomalous exponent α and the generalized diffusion coefficient D_α by fitting the TAMSD curve as a function of lag-time with the formula for the average TAMSD in 2 dimensions:
