@@ -46,7 +46,8 @@ This will generate an intermediate file ‘{movie_name_basis}-C{n}_gui2.mat’ a
 
 This file contains several matrices. For each movie, a new field ‘IFO.calmatrix’ should be  appended to the IFO structure, which contains the file name of the alignment matrix (Example: IFO.calmatrix=’alignement_matrix’).
 #### Clathrin Coated-Pits binary mask
-CCP movies are not tracked because CCP are larger than diffraction limit. Instead a binary mask is made using the function 'binary_msk_CCP'
+CCP movies are not tracked because CCP are larger than diffraction limit. Instead a binary mask is made using the function 'binary_msk_CCP'.
+This generates a 
 
 #### Interaction analysis
 The interaction analysis is performed using the script ‘cycles_interaction.m’. The script computes the colocalization events between  C1 and C2 as described in Sungkaworn, T. et al. Single-molecule imaging reveals receptor-G protein interactions at cell surface hot spots. Nature 550, 543–547 (2017).
