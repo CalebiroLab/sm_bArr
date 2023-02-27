@@ -24,6 +24,9 @@ The structure parameter contains all the parameters used for analysis. It can be
 A .mat file should be created containing 2 variables of 1x3 cells containing ‘tform’ transformations for channel alignement. The first variable named ‘t_piecewise_linear’ should contain nothing in first cell, the tform for transformation from C2 to C1 in second cell and the tform for transformation from C3 to C1 in the third cell. The second variable ‘t_piecewise_linear_rev’ has the similar structure but with reverse transformations (empty, C1 to C2, C1 to C3).  
 We recommend using a 'piecewise linear' tform although an 'affine' tform transformation could be used as well. 
 The alignment matrix should be stored in the folder specified as ‘global_folders.rawfolder’.
+#### ROI masks
+For each movie and each channel (C1,C2 and C3), a 8 bit single image sould be attached with values 1 whre the cell is and values 0 outside the region of interest. These mask files should be tif files and be named '{movie_name_basis}-C{n}_msk.tif' 
+
 ## Trajectory analysis
 #### Detection and tracking
 Detection and tracking are done using the u-track software, which can be downloaded here:
@@ -57,8 +60,6 @@ The algorithm first does gap closing of the X and Y coordinates, then it compute
 
 Then a third file is created  where the trajectory are reorganised according to the interaction linking performed by the optimisation algorithm.
 
-
-
 Please cite 
 >Sungkaworn, T. et al. Single-molecule imaging reveals receptor-G protein interactions at cell surface hot spots. Nature 550, 543–547 (2017).
 
@@ -72,9 +73,6 @@ Please cite
 >Lanoiselée, Y., Grimes, J., Koszegi, Z. & Calebiro, D. Detecting transient trapping from a single trajectory: A structural approach. Entropy 23, 1–16 (2021).
 
 Then, the information about transient trapping is combined with that of colocalization between recpetor and arrestin as well as with the information about colocalisation of receptor or arrestin with Clathrin Coated Pits over time using the script “cycle_states_forced_or_not.m”. This generates a file ‘{movie_name_basis}-C{n}_list_states.mat’ for each movie and channel n in the folder ‘global_folders.state_analysis_folder’.
-
-
-
 
 #### Time-averaged MSD
 The TAMSD is computed for each trajectory in C1 and C2 using the function ‘cycle_TAMSD.m’. For each trajectory, the analysis estimates the anomalous exponent α and the generalized diffusion coefficient D_α by fitting the TAMSD curve as a function of lag-time with the formula for the average TAMSD in 2 dimensions:
