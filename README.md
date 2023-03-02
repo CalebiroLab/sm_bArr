@@ -30,7 +30,7 @@ The alignment matrix should be stored in the folder specified as ‘global_folde
 For each movie and each channel (C1,C2 and C3), a 8 bit single image sould be attached with values 1 whre the cell is and values 0 outside the region of interest. These mask files should be tif files and be named '{movie_name_basis}-C{n}_msk.tif' 
 
 ## Steps to follow for analysis
-
+1. Preprocessing using the function: preprocessing_from_utrack_format(movie_list,list_groups,global_folders,list_channel,start,inter)
 
 ## Trajectory analysis
 #### Detection and tracking
