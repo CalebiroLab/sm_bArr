@@ -42,9 +42,10 @@ The u-track parameters used in our study for detection and tracking can be found
 After excluding trajectory coordinates that lie outside the region of interest, the output of u-track is converted to a custom format using the script ‘utrack_to_OBJ_v1.m’, which reorganises compound trajectories from u-track into separate objects.  
 The script is adapted from 
 >Cocucci E. et al. The First Five Seconds in the Life of a Clathrin-Coated Pit. Cell 150, 3 495-507 (2012).
+
 This will generate an intermediate file ‘{movie_name_basis}-C{n}_gui2.mat’ a the file containing trajectories in our format named ‘{movie_name_basis}-C{n}_gui2_steps.mat’ in the folder ‘global_folders.rawfolder’.  
-‘{movie_name_basis}-C{n}_gui2.mat’ file contains three variables:
-1. OBJ: a structure where data coordinates are contained in OBJ.xR and OBJ.yR and spot intensities in OBJ.trjRB, when a molecules disapears the last coordinate is repeated for all subsequent frames.
+The ‘{movie_name_basis}-C{n}_gui2.mat’ file contains the following:
+1. OBJ: a structure where data coordinates are contained in OBJ.xR and OBJ.yR and spot intensities in OBJ.trjRB.
 2. OBJ2: a structure where data coordinates are contained in OBJ2.xR and OBJ2.yR and spot intensities in OBJ2.trjRB, when a molecules disapears all subsequent frames are NaN.
 3. IFO: structure containing informations on the data.
 4. TME: variable containing the time point corresponding to each frame
@@ -52,15 +53,14 @@ This will generate an intermediate file ‘{movie_name_basis}-C{n}_gui2.mat’ a
 This file contains several matrices. For each movie, a new field ‘IFO.calmatrix’ should be  appended to the IFO structure, which contains the file name of the alignment matrix (Example: IFO.calmatrix=’alignement_matrix’).
 #### Clathrin Coated-Pits binary mask
 CCP movies are not tracked because CCP are larger than diffraction limit. Instead a binary mask is made using the function 'binary_msk_CCP'.
-This generates a 
 
 #### Interaction analysis
-The interaction analysis is performed using the script ‘cycles_interaction.m’. The script computes the colocalization events between  C1 and C2 as described in Sungkaworn, T. et al. Single-molecule imaging reveals receptor-G protein interactions at cell surface hot spots. Nature 550, 543–547 (2017).
+The interaction analysis is performed using the script ‘cycles_interaction.m’. The script computes the colocalization events between C1 and C2 as described in Sungkaworn, T. et al. Single-molecule imaging reveals receptor-G protein interactions at cell surface hot spots. Nature 550, 543–547 (2017).
 
 This script generates the following files in the folder ‘global_folders.rawfolder’:
-1. ‘{movie_name_basis}-C1{movie_name_basis}-C2_intmatrix2.mat’: contains the 'interaction matrix', a n_i x 10 matrix classifying all interations found, where First column and Second column are the first and last frame of interaction, column 3 and 7 are the channel numbers, column 4 and 8 correspond to the trajectory number in OBJ2 of the GUI2_steps file.   
+1. ‘{movie_name_basis}-C1{movie_name_basis}-C2_intmatrix2.mat’: contains the 'interaction matrix', a n_i x 10 matrix classifying all interations found, where First column and second column are the first and last frame of interaction, column 3 and 7 are the channel numbers, column 4 and 8 correspond to the trajectory number in OBJ2 of the GUI2_steps file.   
 
-2. ‘{movie_name_basis}-C1{movie_name_basis}-C2_intmatrix_0pShiftX-0pShiftY-0fShiftT.mat’: contains a structure 'Ch' that contains all the trajectories post alignement combined with the interaction matrix and a list of all interaction start, and a list of interaction 'families', portions of interactions that together form a longer interaction.
+2. ‘{movie_name_basis}-C1{movie_name_basis}-C2_intmatrix_0pShiftX-0pShiftY-0fShiftT.mat’: contains a structure 'Ch' that contains all the trajectories post alignement combined with the interaction matrix, a list of all interaction start and end frames, and a list of interaction 'families', i.e. the portions of interactions that together form a longer interaction.
 
 The algorithm first does gap closing of the X and Y coordinates, then it computes the interaction matrix. Then an optimisation routine is used to link interactions portions together into longer 'interaction families' by trying to minimize the number of interaction families and starting from the case where each interaction is in a different family. This process is necessary to deal with situations with merges and splits. For example, if two receptor molecules are at the same place, their trajectory will be exactly the same until they split. If, while merged, the receptors colocalise with an arrestin molecule then both receptors will be recorded to colocalise with the same arrestin in the 'interaction matrix'. Because an arrestin cannot interact with two receptors at the same time, the optimisation routine finds to which receptor the interaction should be attributed depending on which continues to colocalise after the split.
 
