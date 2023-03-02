@@ -17,7 +17,6 @@ for n_mov=1:numel(movie_name)
             disp([filename,' computing'] )
             %% Scripts to run after original utrack detection and tracking
             copyfile ([global_folders.rawfolder, filesep, filename, '_tracking.mat'],[global_folders.localfolder, filesep])
-            %% utrackToTill
             utrack_to_OBJ_v1(filename, frame_duration, [global_folders.localfolder, filesep]);
             %% Reshape the data to remove merges and splits (saved in OBJ2)
             OBJ_reshape(filename, global_folders);
