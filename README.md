@@ -9,7 +9,7 @@ bioRxiv, 2022.11. 15.516577
 MATLAB R2018b
 ## Analysis requirements
 #### Movie Names
-Movies of Receptor and Arrestin are recorded simultaneously as .tif files. Receptor and arrestin movies should have the same base name (example ‘{movies_name_basis}1’) but with a suffix ‘-C1’ for receptor and a suffix ‘-C2’ for arrestin and '-C3' for clathrin coated pits (CCP).
+Movies of Receptor and Arrestin are recorded simultaneously as 16-bit .tif files. Receptor and arrestin movies should have the same base name (example ‘{movies_name_basis}1’) but with a suffix ‘-C1’ for receptor and a suffix ‘-C2’ for arrestin and '-C3' for clathrin coated pits (CCP).
 #### Folders
 The file ‘global_folders.m’ contains all the paths to the folders used in the analysis. The user should create all the folders specified in this file and update the paths in the file accordingly. All raw data should be stored in the folder specified as 'global_folders.rawfolder'.
 #### Movie list
@@ -27,7 +27,7 @@ A .mat file should be created containing 2 variables of 1x3 cells containing ‘
 We recommend using a 'piecewise linear' tform although an 'affine' tform transformation could be used as well. 
 The alignment matrix should be stored in the folder specified as ‘global_folders.rawfolder’.
 #### ROI masks
-For each movie and each channel (C1,C2 and C3), a 8 bit single image sould be attached with values 1 whre the cell is and values 0 outside the region of interest. These mask files should be tif files and be named '{movie_name_basis}-C{n}_msk.tif' 
+For each movie and each channel (C1,C2 and C3), a 8-bit single image sould be attached with values 1 whre the cell is and values 0 outside the region of interest. These mask files should be tif files and be named '{movie_name_basis}-C{n}_msk.tif' 
 
 ## Steps to follow for analysis
 1. Preprocessing using the function: preprocessing_from_utrack_format(movie_list,list_groups,global_folders,list_channel,start,inter)
