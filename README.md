@@ -6,8 +6,8 @@ bioRxiv, 2022.11. 15.516577
 [![DOI](https://zenodo.org/badge/570954506.svg)](https://zenodo.org/badge/latestdoi/570954506)
 
 ## System requirements
-MATLAB R2018b
-Image Processing Toolbox
+MATLAB R2018b  
+Image Processing Toolbox  
 Statistics and Machine Learning Toolbox
 
 ## Analysis requirements
