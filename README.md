@@ -1,4 +1,4 @@
-# Analysis of b2AR and bArrestin2 interactions from single-particle tracking data in CHO cells
+# Single molecule analysis of protein-protein spatiotemproal co-dynamics
 **Plasma membrane preassociation drives b-arrestin coupling to receptors and activation**  
 Jak Grimes, Zsombor Koszegi, Yann Lanoiselée, Tamara Miljus, Shannon L. O’Brien, Tomasz M. Stepniewski, Brian Medel-Lacruz, Mithu Baidya, Maria Makarova, Ravi Mistry, Joëlle Goulding, Julia Drube, Carsten Hoffmann, Dylan M. Owen, Arun K. Shukla, Jana Selent, Stephen J. Hill, Davide Calebiro  
 bioRxiv, 2022.11. 15.516577
@@ -7,6 +7,9 @@ bioRxiv, 2022.11. 15.516577
 
 ## System requirements
 MATLAB R2018b
+Image Processing Toolbox
+Statistics and Machine Learning Toolbox
+
 ## Analysis requirements
 #### Movie Names
 Movies of Receptor and Arrestin are recorded simultaneously as 16-bit .tif files. Receptor and arrestin movies should have the same base name (example ‘{movies_name_basis}1’) but with a suffix ‘-C1’ for receptor and a suffix ‘-C2’ for arrestin and '-C3' for clathrin coated pits (CCP).
