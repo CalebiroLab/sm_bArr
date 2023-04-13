@@ -10,17 +10,16 @@ MATLAB R2018b
 Image Processing Toolbox  
 Statistics and Machine Learning Toolbox
 
-## Analysis requirements
+## Analysis Inputs
+Trajectories 'X' and 'Y' coordinates must be stored in two MxN matrices where 'M' is the number of trajectories and 'N' is the number of frames. Trajectory coordinates must be in pixel units. Missing data points must be 'nan' values.
+Clathrin-Coated Pit (CCP) localisations must be stored either as a binary stack of size LxLxN where 'L' is the number of pixels (assuming square images) or as a LxL single image, where 1 denotes the presence of CCP and 0 denotes its absence.
 
+CCP pixel size must match trajectories coordinates pixel size.
 
 ## Steps to follow for analysis
 
-
-#### Clathrin Coated-Pits binary mask
-CCP movies are not tracked because CCP are larger than diffraction limit. Instead a binary mask is made using the function 'binary_msk_CCP'.
-
 #### Interaction analysis
-The interaction analysis is performed using the script ‘cycles_interaction.m’. The script computes the colocalization events between C1 and C2 as described in Sungkaworn, T. et al. Single-molecule imaging reveals receptor-G protein interactions at cell surface hot spots. Nature 550, 543–547 (2017).
+The interaction analysis computes the colocalization events between C1 and C2 as described in Sungkaworn, T. et al. Single-molecule imaging reveals receptor-G protein interactions at cell surface hot spots. Nature 550, 543–547 (2017).
 
 A file is created  where the trajectory are reorganised according to the interaction linking performed by the optimisation algorithm that also contains the interaction information.
 
@@ -36,13 +35,18 @@ https://github.com/YannLanoiselee/Transient_trapping_analysis
 Please cite 
 >Lanoiselée, Y., Grimes, J., Koszegi, Z. & Calebiro, D. Detecting transient trapping from a single trajectory: A structural approach. Entropy 23, 1–16 (2021).
 
-Then, the information about transient trapping is combined with that of colocalization between recpetor and arrestin as well as with the information about colocalisation of receptor or arrestin with Clathrin Coated Pits over time using the script “cycle_states_forced_or_not.m”. This generates a file ‘{movie_name_basis}-C{n}_list_states.mat’ for each movie and channel n in the folder ‘global_folders.state_analysis_folder’.
-<!---
-#### Time-averaged MSD
-The TAMSD is computed for each trajectory in C1 and C2 using the function ‘cycle_TAMSD.m’. For each trajectory, the analysis estimates the anomalous exponent α and the generalized diffusion coefficient D_α by fitting the TAMSD curve as a function of lag-time with the formula for the average TAMSD in 2 dimensions:
+Then, the information about transient trapping is combined with that of colocalization between molecule 1 and and arrestin as well as with the information about colocalisation of receptor or arrestin with Clathrin Coated Pits over time. This generates a file ‘{movie_name_basis}-C{n}_list_states.mat’ for each channel {n}.
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\langle%20\delta^2(\Delta,t)\rangle=4D_\alpha%20\Delta^\alpha+4\sigma^2"/>
+## Examples
 
-The function generates a result matrix saved in ‘{movie_name_basis}-C{n}_MSD.mat’ containing the computed generalized diffusion coefficient and the anomalous exponent values in the first and second column, respectively.
---->
+#### 1 molecule type with CCP
+In this case the analysis computes the transient trapping of trajectories, the presence or not of molecules at CCP and combines this information in 3+1 states stored in a MxN matrix. 
+
+#### 2 molecules
+
+In this case the analysis start with the colocalisation between the two molecules, then computes the transient trapping for trajectories of each molecule type and combines this information in stored in a MxN matrix. 
+
+#### 2 molecules with CCP
+
+In this case the analysis start with the colocalisation between the two molecules, then computes the transient trapping for trajectories of each molecule type, computes the presence or not of molecules at CCP and combines this information into 6+1 states. 
 
