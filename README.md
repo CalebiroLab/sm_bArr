@@ -42,11 +42,11 @@ Then, the information about transient trapping is combined with that of colocali
 #### 1 molecule type with CCP
 In this case the analysis computes the transient trapping of trajectories, the presence or not of molecules at CCP and combines this information in 3+1 states stored in a MxN matrix. 
 
-#### 2 molecules
+#### 2 molecule types
 
 In this case the analysis start with the colocalisation between the two molecules, then computes the transient trapping for trajectories of each molecule type and combines this information in stored in a MxN matrix. 
 
-#### 2 molecules with CCP
+#### 2 molecule types with CCP
 
 In this case the analysis start with the colocalisation between the two molecules, then computes the transient trapping for trajectories of each molecule type, computes the presence or not of molecules at CCP and combines this information into 6+1 states. 
 
