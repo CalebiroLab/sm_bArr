@@ -37,6 +37,8 @@ Please cite
 
 Then, the information about transient trapping is combined with that of colocalization between molecule 1 and and arrestin as well as with the information about colocalisation of receptor or arrestin with Clathrin Coated Pits over time. This generates a file ‘{movie_name_basis}-C{n}_list_states.mat’ for each channel {n}.
 
+## States definition 
+The analysis generates independent binary vectors for transient trapping, interaction with another molecule type,   
 ## Examples
 
 #### 1 molecule type with CCP
