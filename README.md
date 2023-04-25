@@ -48,12 +48,12 @@ Depending on the settings, the scripts can be used to obtain different type of i
 ## Examples
 
 #### One channel only with CCPs
-In this case, the scrpt computes the transient trapping of trajectories, the presence/absence of CCP localization and combines this information in 3+1 states stored in a MxN matrix. 
+In this example, the script computes the transient trapping of trajectories, the presence/absence of CCP localization and combines this information in 3+1 states stored in a MxN matrix. 
 
 #### Two channels
 
-In this case the analysis start with the colocalization between the molecules in the two channels, then computes their transient trapping and combines the information about the resulting 4+1 states in a MxN matrix. 
+In this example, the script starts with the colocalization between the molecules in the two channels, then computes their transient trapping and combines the information about the resulting 4+1 states in a MxN matrix. 
 
 #### Two channels with CCPs
 
-In this case the analysis start with the colocalization between the molecules in the two channels, then computes their transient trapping and presence/absence of CCP localization and combines the information about the resulting 6+1 states in a MxN matrix. 
+In this example, the script starts with the colocalization between the molecules in the two channels, then computes their transient trapping and presence/absence of CCP localization and combines the information about the resulting 6+1 states in a MxN matrix. 
