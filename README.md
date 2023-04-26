@@ -2,7 +2,7 @@
 This repository contains the MATLAB scripts used for the single-moelcule analyses on receptors and beta-arrestins in:
 **Plasma membrane preassociation drives beta-arrestin coupling to receptors and activation**  
 Jak Grimes, Zsombor Koszegi, Yann Lanoiselée, Tamara Miljus, Shannon L. O’Brien, Tomasz M. Stepniewski, Brian Medel-Lacruz, Mithu Baidya, Maria Makarova, Ravi Mistry, Joëlle Goulding, Julia Drube, Carsten Hoffmann, Dylan M. Owen, Arun K. Shukla, Jana Selent, Stephen J. Hill, Davide Calebiro  
-Cell 186, 1-18 (2023)
+
 
 [![DOI](https://zenodo.org/badge/570954506.svg)](https://zenodo.org/badge/latestdoi/570954506)
 
