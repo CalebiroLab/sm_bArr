@@ -13,10 +13,8 @@ Image Processing Toolbox
 Statistics and Machine Learning Toolbox
 
 ## Analysis Inputs
-Trajectories 'X' and 'Y' coordinates must be stored in two MxN matrices where 'M' is the number of trajectories and 'N' is the number of frames. Trajectory coordinates must be in pixel units. Missing data points must be 'NaN' values.
-Clathrin-Coated Pit (CCP) localizations must be stored either as a binary stack of size LxLxN where 'L' is the number of pixels (assuming square images) or as a LxL single image, where 1 denotes the presence of CCP and 0 denotes its absence.
-
-The CCP pixel size must match that of the trajectory coordinates.
+Trajectories 'X' and 'Y' coordinates must be stored in two separate MxN matrices where 'M' is the number of trajectories and 'N' is the number of frames. Trajectory coordinates must be in pixel units. Missing data points must be replaced by 'NaN' values.  
+If used, clathrin-coated pit (CCP) image masks must be stored either as a binary stack of size LxLxN where 'L' is the number of pixels (assuming square images) or as a LxL single image, where 1 denotes the presence of CCP and 0 denotes its absence. The CCP pixel size must match that of the trajectory coordinates.
 
 ## Steps to follow for the analysis
 
@@ -42,9 +40,9 @@ Then, the information about transient trapping is combined with that about coloc
 The analysis generates an output file ‘{movie_name_basis}-C{n}_list_states.mat’ for each channel {n}.
 
 ## State assignment 
-The analysis generates separate binary matrices that contain information about transient trapping, interaction with molecules in the other channel and localization in CCPs for each molecule at each frame. This information is used to build a matrix that contains the state assign to each moleucle at each frame. A dull state is added to represent molecules before/after their appearance/disappearance, for instance due to movement between the cytoplasm and the plasma membrane. 
+The analysis generates separate binary matrices that contain information about transient trapping, interaction with molecules in the other channel and localization in CCPs for each molecule at each frame. This information is used to build a matrix that contains the state assigned to each molecule at each frame. A dull state is added to represent molecules before/after their appearance/disappearance, for instance due to movement between the cytoplasm and the plasma membrane. 
 
-Depending on the settings, the scripts can be used to obtain different type of information.
+Depending on the settings, the scripts can be used to obtain different types of information, as illustrated in the provided examples.
 
 ## Examples
 
@@ -53,8 +51,8 @@ In this example, the script computes the transient trapping of trajectories, the
 
 #### Two channels
 
-In this example, the script starts with the colocalization between the molecules in the two channels, then computes their transient trapping and combines the information about the resulting 4+1 states in a MxN matrix. 
+In this example, the script starts with the colocalizations between the molecules in the two channels, then computes their transient trapping and combines the information in 4+1 states stored in a MxN matrix. 
 
 #### Two channels with CCPs
 
-In this example, the script starts with the colocalization between the molecules in the two channels, then computes their transient trapping and presence/absence of CCP localization and combines the information about the resulting 6+1 states in a MxN matrix. 
+In this example, the script starts with the colocalizations between the molecules in the two channels, then computes their transient trapping and presence/absence of CCP localization and combines the information in 6+1 states stored in a MxN matrix. 
